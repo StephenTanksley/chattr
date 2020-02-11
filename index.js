@@ -5,10 +5,10 @@ const socket = require('socket.io')
 
 // App setup
 const app = express()
-// const PORT = process.env.PORT || 5000;
-const server = app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, () => {
     // console.log(`\n ** Running on http://localhost:${PORT}... ** \n`)
-    console.log(`\n ** Running on http://localhost:5000... ** \n`)
+    console.log(`\n ** Running on http://localhost:${PORT}... ** \n`)
 })
 
 //static files.
@@ -17,7 +17,7 @@ app.use(express.static('public'));
 //socket setup
 const io = socket(server)
 io.on('connection', (socket) => {
-    
+
     console.log('Made socket connection', socket.id)
 
     //handle chat event
