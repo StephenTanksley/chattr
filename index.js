@@ -5,8 +5,7 @@ const socket = require('socket.io')
 const app = express()
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
-    // console.log(`\n ** Running on http://localhost:${PORT}... ** \n`)
-    console.log(`\n ** Running on http://localhost:${PORT}... ** \n`)
+    console.log(`\n ** Running on port ${PORT}... ** \n`)
 })
 
 //static files.
