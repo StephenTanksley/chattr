@@ -14,7 +14,6 @@ let feedback = document.getElementById('feedback')
 
 //emit events
     btn.addEventListener('click', () => {
-        console.log(message.value, handle.value)
         socket.emit('chat', {
             message: message.value,
             handle: handle.value 
