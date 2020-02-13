@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js",
-    "start": "node index.js"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +19,9 @@
   },
   "homepage": "https://github.com/StephenTanksley/chattr#readme",
   "dependencies": {
-    "cross-env": "^7.0.0",
-    "express": "^4.17.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {

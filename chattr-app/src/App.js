@@ -6,7 +6,10 @@ import openSocket from 'socket.io-client'
 
 const App = () => {
 const PORT = process.env.PORT || 5000
-const [newMessage, setNewMessage] = useState('');
+const [newMessage, setNewMessage] = useState({
+  handle: "",
+  message: ""
+});
 const [allMessages, setAllMessages] = useState([])
 
 const socket = openSocket(`http://localhost:${PORT}`)
@@ -15,6 +18,16 @@ socket.on('chat', (data) => {
   setAllMessages([...allMessages, data])
 })
 
+
+const handleChange = (e) => {
+  e.preventDefault()
+  console.log('new value', e.target.value)
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+}
+
 const sendMessage = () => {
   console.log('Sent!');
 
@@ -22,14 +35,14 @@ const sendMessage = () => {
   socket.emit('chat', newMessage)
 
   //clear the input field after sending.
-  setMessage('')
+  setNewMessage('')
 }
 
 
 
   return (
     <div className="app-container">
-      <header className="app-header"></header>
+      <header className="app-header"><h2>Chat Client</h2></header>
       <div className="message-window">
 
         { allMessages.map(message => {
@@ -39,9 +52,13 @@ const sendMessage = () => {
       </div>
       <div className="input-container">
         <input 
-          name="message" 
-          type="text" 
-          onChange={(e) => setMessage(e.target.value)}
+          name="handle"
+          onChange={handleChange}
+          placeholder="user handle..." />
+
+        <input 
+          name="message"
+          onChange={handleChange}
           placeholder="type your message..." />
         
         <button 
